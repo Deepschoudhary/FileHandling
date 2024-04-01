@@ -10,46 +10,45 @@ public class FileManager {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Welcome to File Operations Menu!");
-        int choice;
+        String choice;
         do {
             System.out.println("\nMenu:");
-            System.out.println("1. Create a new file.");
-            System.out.println("2. Write to a file.");
-            System.out.println("3. Read a file.");
-            System.out.println("4. Copy content from one file to another.");
-            System.out.println("5. Show all files in resources folder.");
-            System.out.println("6. Delete a file.");
-            System.out.println("7. Exit");
+            System.out.println("create. Create a new file.");
+            System.out.println("write. Write to a file.");
+            System.out.println("read. Read a file.");
+            System.out.println("copy. Copy content from one file to another.");
+            System.out.println("show. Show all files in resources folder.");
+            System.out.println("delete. Delete a file.");
+            System.out.println("exit. Exit");
             System.out.print("Enter your choice: ");
-            choice = scanner.nextInt();
+            choice = scanner.nextLine().toLowerCase();
 
             switch (choice) {
-                case 1:
+                case "create":
                     createNewFile();
                     break;
-                case 2:
+                case "write":
                     writeToFile();
                     break;
-                case 3:
+                case "read":
                     readFromFile();
                     break;
-
-                case 4:
+                case "copy":
                     copyContent();
                     break;
-                case 5:
+                case "show":
                     showAllFiles();
                     break;
-                case 6:
+                case "delete":
                     deleteFile();
                     break;
-                case 7:
+                case "exit":
                     System.out.println("Exiting...");
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
-        } while (choice != 7);
+        } while (!choice.equals("exit"));
 
         scanner.close();
     }
@@ -71,7 +70,7 @@ public class FileManager {
             return;
         }
         else{
-        System.out.print("Enter text to write to the file: ");
+            System.out.print("Enter text to write to the file: ");
         String text = scanner.nextLine();
         FileWrite.writeToFile(fileName, text);
     }}
